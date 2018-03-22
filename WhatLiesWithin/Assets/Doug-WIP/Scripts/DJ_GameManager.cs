@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DJ_GameManager : MonoBehaviour {
 
+    //Delete me
     public static bool bl_HasPhone;
     public static bool bl_HasOfficeKey;
     public bool paused = false;

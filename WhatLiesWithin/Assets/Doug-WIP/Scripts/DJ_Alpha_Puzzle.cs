@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class DJ_Alpha_Puzzle : MonoBehaviour
 {
-
+    //Delete me
     public int in_button1;
     public int in_b1Answer;
     public bool bl_A1;
