@@ -21,11 +21,17 @@ public class DJ_PC_Controller : MonoBehaviour {
     public float fl_timer;
     [Tooltip("How long the phone is forced off for")]
     public float fl_cooldown;
-
-
+    [Tooltip("Button used for opening the phone")]
+    public KeyCode key_messageButton;
+    [Tooltip("Button used for switching the light on/off")]
+    public KeyCode key_lightButton;
+    [Tooltip("The light object on the phone *DO NOT CHANGE*")]
     public GameObject go_LightPhone;
+    [Tooltip("The Canvas for the phone messages *DO NOT CHANGE*")]
     public Canvas ca_messages;
+    [Tooltip("The Canvas for the phone light *DO NOT CHANGE*")]
     public Canvas ca_light_phone;
+    [Tooltip("The Camera on the PC *DO NOT CHANGE*")]
     public Camera ca_Camera;
     
     
@@ -39,6 +45,9 @@ public class DJ_PC_Controller : MonoBehaviour {
     private bool bl_Has_phone;
     private bool bl_Jumped;
     private Rigidbody rb_pc;
+    
+
+    
 
 
 
@@ -56,9 +65,12 @@ public class DJ_PC_Controller : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate () {
 
-
-        MovePC();
-        CheckGrounded();
+        if (DJ_GameManager.bl_InControl)
+        {
+            MovePC();
+            CheckGrounded();
+        }
+        
 
         #region OLD PC Movement
         /*
@@ -92,7 +104,7 @@ public class DJ_PC_Controller : MonoBehaviour {
         {
 
             #region Message Phone
-            if ((Input.GetKeyDown(KeyCode.P)) && (!bl_Phone) && (!bl_Light))
+            if ((Input.GetKeyDown(key_messageButton)) && (!bl_Phone) && (!bl_Light))
             {
                 bl_Phone = true;
 
@@ -100,7 +112,7 @@ public class DJ_PC_Controller : MonoBehaviour {
                 as_click.Play();
 
             }
-            else if ((Input.GetKeyDown(KeyCode.P)) && (bl_Phone))
+            else if ((Input.GetKeyDown(key_messageButton)) && (bl_Phone))
             {
                 ca_messages.enabled = false;
                 bl_Phone = false;
@@ -109,7 +121,7 @@ public class DJ_PC_Controller : MonoBehaviour {
             #endregion
 
             #region Light Phone
-            if ((Input.GetKeyDown(KeyCode.L)) && (!bl_Light) && (!bl_Phone) && (!bl_onCooldown))
+            if ((Input.GetKeyDown(key_lightButton)) && (!bl_Light) && (!bl_Phone) && (!bl_onCooldown))
             {
 
                 go_LightPhone.SetActive(true);
@@ -119,7 +131,7 @@ public class DJ_PC_Controller : MonoBehaviour {
 
 
             }
-            else if ((Input.GetKeyDown(KeyCode.L)) && (bl_Light))
+            else if ((Input.GetKeyDown(key_lightButton)) && (bl_Light))
             {
 
                 go_LightPhone.SetActive(false);

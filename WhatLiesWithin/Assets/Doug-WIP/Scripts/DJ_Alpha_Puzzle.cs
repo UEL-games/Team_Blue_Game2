@@ -5,29 +5,42 @@ using UnityEngine.UI;
 
 public class DJ_Alpha_Puzzle : MonoBehaviour
 {
-    //Delete me
-    public int in_button1;
+    //This script houses the variables for the alpha puzzle - DO NOT EDIT
+
+    [Tooltip("The current number answer 1 is on")]
+    public int in_button1 = 0;
+    [Tooltip("The correct number for answer 1")]
     public int in_b1Answer;
+    [Tooltip("Is answer 1 correct?")]
     public bool bl_A1;
     public GameObject go_A1Correct;
 
-    public int in_button2;
+    [Tooltip("The current number answer 2 is on")]
+    public int in_button2 = 0;
+    [Tooltip("The correct number for answer 2")]
     public int in_b2Answer;
+    [Tooltip("Is answer 2 correct?")]
     public bool bl_A2;
     public GameObject go_A2Correct;
 
-    public int in_button3;
+    [Tooltip("The current number answer 3 is on")]
+    public int in_button3 = 0;
+    [Tooltip("The correct number for answer 3")]
     public int in_b3Answer;
+    [Tooltip("Is answer 3 correct?")]
     public bool bl_A3;
     public GameObject go_A3Correct;
 
-    public int in_button4;
+    [Tooltip("The current number answer 4 is on")]
+    public int in_button4 = 0;
+    [Tooltip("The correct number for answer 4")]
     public int in_b4Answer;
+    [Tooltip("Is answer 4 correct?")]
     public bool bl_A4;
     public GameObject go_A4Correct;
 
     public GameObject TakeKey;
-    private bool bl_allRight;
+    public static bool bl_AlphaallRight;
     public GameObject go_keybox_glass;
     public GameObject go_keybox_noglass;
     
@@ -40,8 +53,8 @@ public class DJ_Alpha_Puzzle : MonoBehaviour
         #region KeyBoxB1
         if (DJ_Raycast.st_RaycastHit == "KeyBoxB1")
         {
-            in_button1 += in_button1;
-            Debug.Log(in_button1);
+            in_button1 += 1;
+            DJ_Raycast.st_RaycastHit = "";
         }
         if (in_button1 >= 10)
         {
@@ -61,7 +74,8 @@ public class DJ_Alpha_Puzzle : MonoBehaviour
         #region KeyBoxB2
         if (DJ_Raycast.st_RaycastHit == "KeyBoxB2")
         {
-            in_button2 += in_button2;
+            in_button2 += 1;
+            DJ_Raycast.st_RaycastHit = "";
         }
         if (in_button2 >= 10)
         {
@@ -82,9 +96,10 @@ public class DJ_Alpha_Puzzle : MonoBehaviour
         #region KeyBoxB3
         if (DJ_Raycast.st_RaycastHit == "KeyBoxB3")
         {
-            in_button3 += in_button3;
+            in_button3 += 1;
+            DJ_Raycast.st_RaycastHit = "";
         }
-            if (in_button3 <= 10)
+            if (in_button3 >= 10)
             {
                 in_button3 = 0;
             }
@@ -103,9 +118,10 @@ public class DJ_Alpha_Puzzle : MonoBehaviour
         #region KeyBoxB4
         if (DJ_Raycast.st_RaycastHit == "KeyBoxB4")
         {
-            in_button4 += in_button4;
+            in_button4 += 1;
+            DJ_Raycast.st_RaycastHit = "";
         }
-            if (in_button4 <= 10)
+            if (in_button4 >= 10)
             {
                 in_button4 = 0;
             }
@@ -123,8 +139,8 @@ public class DJ_Alpha_Puzzle : MonoBehaviour
         #endregion
         if (bl_A1 && bl_A2 && bl_A3 && bl_A4)
         {
-            Debug.Log("All True");
-            bl_allRight = true;
+          //  Debug.Log("All True");
+            bl_AlphaallRight = true;
             //go_keybox_glass.SetActive(false);
             Destroy(go_keybox_glass);
         }
@@ -132,15 +148,35 @@ public class DJ_Alpha_Puzzle : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (bl_allRight)
+        
+        if (bl_AlphaallRight)
         {
             TakeKey.SetActive(true);
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (bl_AlphaallRight)
         {
+            TakeKey.SetActive(true);
+        }
+
+
+        if ((Input.GetKey(KeyCode.E)) && (bl_AlphaallRight))
+        {
+            //Debug.Log("Pressing E");
             Destroy(TakeKey);
             Destroy(go_keybox_noglass);
             DJ_GameManager.bl_HasOfficeKey = true;
+            Destroy(this);
         }
+
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        TakeKey.SetActive(false);
     }
 }

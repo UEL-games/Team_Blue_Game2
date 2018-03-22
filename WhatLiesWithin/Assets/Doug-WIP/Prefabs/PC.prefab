@@ -217,7 +217,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1899538233845898}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -1.75, y: 1, z: 3}
+  m_LocalPosition: {x: 24.26, y: 1, z: 26.59}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4687109871814198}
@@ -572,17 +572,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e7ab6fd9498e0d4faecb6c75a2264e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fl_MoveSpeed: 3
-  fl_CameraSpeed: 20
-  go_LightPhone: {fileID: 1359687575252638}
-  ca_messages: {fileID: 223039649919135448}
-  ca_light_phone: {fileID: 223322863553319066}
-  fl_timer: 10
-  fl_cooldown: 2
-  ca_Camera: {fileID: 20249442095519496}
   fl_mouse_rotation_rate: 150
   fl_speed: 2
   fl_jump_force: 300
+  fl_timer: 30
+  fl_cooldown: 2
+  key_messageButton: 112
+  key_lightButton: 108
+  go_LightPhone: {fileID: 1359687575252638}
+  ca_messages: {fileID: 223039649919135448}
+  ca_light_phone: {fileID: 223322863553319066}
+  ca_Camera: {fileID: 20249442095519496}
 --- !u!114 &114519266661074300
 MonoBehaviour:
   m_ObjectHideFlags: 1
