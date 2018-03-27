@@ -9,6 +9,8 @@ public class DJ_Inventory : MonoBehaviour {
     public GameObject ca_invUI;
     [Tooltip("Image file of the key")]
     public RawImage ri_Key;
+    [Tooltip("Image for the Document")]
+    public RawImage ri_Document;
     [Tooltip("The button used to open/close inventory")]
     public KeyCode key_inventoryButton;
 
@@ -23,6 +25,10 @@ public class DJ_Inventory : MonoBehaviour {
             if (DJ_GameManager.bl_HasOfficeKey)
             {
                 ri_Key.gameObject.SetActive(true);
+            }
+            if (DJ_GameManager.bl_HasLetter)
+            {
+                ri_Document.gameObject.SetActive(true);
             }
 
             if ((Input.GetKeyDown(key_inventoryButton)) && (bl_invOpen == false))

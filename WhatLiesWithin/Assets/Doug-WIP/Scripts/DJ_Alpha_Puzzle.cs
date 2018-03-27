@@ -14,6 +14,7 @@ public class DJ_Alpha_Puzzle : MonoBehaviour
     [Tooltip("Is answer 1 correct?")]
     public bool bl_A1;
     public GameObject go_A1Correct;
+    public Text A1_text;
 
     [Tooltip("The current number answer 2 is on")]
     public int in_button2 = 0;
@@ -22,6 +23,7 @@ public class DJ_Alpha_Puzzle : MonoBehaviour
     [Tooltip("Is answer 2 correct?")]
     public bool bl_A2;
     public GameObject go_A2Correct;
+    public Text A2_text;
 
     [Tooltip("The current number answer 3 is on")]
     public int in_button3 = 0;
@@ -30,6 +32,7 @@ public class DJ_Alpha_Puzzle : MonoBehaviour
     [Tooltip("Is answer 3 correct?")]
     public bool bl_A3;
     public GameObject go_A3Correct;
+    public Text A3_text;
 
     [Tooltip("The current number answer 4 is on")]
     public int in_button4 = 0;
@@ -38,6 +41,7 @@ public class DJ_Alpha_Puzzle : MonoBehaviour
     [Tooltip("Is answer 4 correct?")]
     public bool bl_A4;
     public GameObject go_A4Correct;
+    public Text A4_text;
 
     public GameObject TakeKey;
     public static bool bl_AlphaallRight;
@@ -55,6 +59,7 @@ public class DJ_Alpha_Puzzle : MonoBehaviour
         {
             in_button1 += 1;
             DJ_Raycast.st_RaycastHit = "";
+            A1_text.text = in_button1.ToString();
         }
         if (in_button1 >= 10)
         {
@@ -76,6 +81,7 @@ public class DJ_Alpha_Puzzle : MonoBehaviour
         {
             in_button2 += 1;
             DJ_Raycast.st_RaycastHit = "";
+            A2_text.text = in_button2.ToString();
         }
         if (in_button2 >= 10)
         {
@@ -98,6 +104,7 @@ public class DJ_Alpha_Puzzle : MonoBehaviour
         {
             in_button3 += 1;
             DJ_Raycast.st_RaycastHit = "";
+            A3_text.text = in_button3.ToString();
         }
             if (in_button3 >= 10)
             {
@@ -120,6 +127,7 @@ public class DJ_Alpha_Puzzle : MonoBehaviour
         {
             in_button4 += 1;
             DJ_Raycast.st_RaycastHit = "";
+            A4_text.text = in_button4.ToString();
         }
             if (in_button4 >= 10)
             {
@@ -167,7 +175,7 @@ public class DJ_Alpha_Puzzle : MonoBehaviour
         if ((Input.GetKey(KeyCode.E)) && (bl_AlphaallRight))
         {
             //Debug.Log("Pressing E");
-            Destroy(TakeKey);
+            TakeKey.SetActive(false);
             Destroy(go_keybox_noglass);
             DJ_GameManager.bl_HasOfficeKey = true;
             Destroy(this);

@@ -7,6 +7,7 @@ public class DJ_GameManager : MonoBehaviour {
     public static bool bl_InControl;
     public static bool bl_HasPhone;
     public static bool bl_HasOfficeKey;
+    public static bool bl_HasLetter;
 
     public static bool paused = false;
     
@@ -40,10 +41,12 @@ public class DJ_GameManager : MonoBehaviour {
 
         if (paused)
         {
+            bl_InControl = false;
             Cursor.lockState = CursorLockMode.None;
         }
         if (paused == false)
         {
+            bl_InControl = true;
             Cursor.lockState = CursorLockMode.Locked;
         }
         #endregion
@@ -51,10 +54,17 @@ public class DJ_GameManager : MonoBehaviour {
         if (Input.GetKey(KeyCode.F10))
         {
             bl_HasPhone = true;
+            Debug.Log("Has Phone " + bl_HasPhone);
         }
         if (Input.GetKeyDown(KeyCode.F11))
         {
             bl_HasOfficeKey = true;
+            Debug.Log("Has Office Key " + bl_HasOfficeKey);
+        }
+        if (Input.GetKeyDown(KeyCode.F12))
+        {
+            bl_HasLetter = true;
+            Debug.Log("Has Letter " + bl_HasLetter);
         }
         #endregion
 

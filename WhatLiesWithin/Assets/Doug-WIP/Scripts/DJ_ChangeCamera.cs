@@ -7,6 +7,7 @@ public class DJ_ChangeCamera : MonoBehaviour {
     public Camera newCamera;
     public Camera oldCamera;
     public bool bl_camerachanged;
+    public GameObject go_canvas;
 
 	// Use this for initialization
 	void Start () {
@@ -24,6 +25,7 @@ public class DJ_ChangeCamera : MonoBehaviour {
             newCamera.enabled = false;
             DJ_GameManager.bl_InControl = true;
             Cursor.lockState = CursorLockMode.Locked;
+            go_canvas.SetActive(false);
         }
 		
 	}
@@ -42,7 +44,7 @@ public class DJ_ChangeCamera : MonoBehaviour {
             newCamera.enabled = true;
             DJ_GameManager.bl_InControl = false;
             DJ_GameManager.paused = true;
-            
+            go_canvas.SetActive(true);
         }
         if ((Input.GetKeyDown(KeyCode.Escape)) && (bl_camerachanged == true))
         {
@@ -51,6 +53,7 @@ public class DJ_ChangeCamera : MonoBehaviour {
             newCamera.enabled = false;
             DJ_GameManager.bl_InControl = true;
             DJ_GameManager.paused = false;
+            go_canvas.SetActive(false);
         }
     }
 }

@@ -33,9 +33,9 @@ public class DJ_PC_Controller : MonoBehaviour {
     public Canvas ca_light_phone;
     [Tooltip("The Camera on the PC *DO NOT CHANGE*")]
     public Camera ca_Camera;
-    
-    
 
+
+    private float fl_initial_speed;
     private float fl_cooldowntime;
     private bool bl_onCooldown;
     private float fl_starttime;
@@ -60,15 +60,16 @@ public class DJ_PC_Controller : MonoBehaviour {
         #endregion
 
         rb_pc = GetComponent<Rigidbody>();
+        fl_initial_speed = fl_speed;
     }
 
     // Update is called once per frame
     void FixedUpdate () {
 
         if (DJ_GameManager.bl_InControl)
-        {
-            MovePC();
-            CheckGrounded();
+        {  
+                MovePC();
+                CheckGrounded();
         }
         
 
@@ -186,7 +187,15 @@ public class DJ_PC_Controller : MonoBehaviour {
                 rb_pc.AddForce(Vector3.up * fl_jump_force);
         }
 
-        
+        // If the run key pressed double the speed
+        if (Input.GetKey(KeyCode.LeftShift))
+            fl_speed = fl_initial_speed * 2;
+        else if (Input.GetKey(KeyCode.LeftControl))
+            fl_speed = fl_initial_speed / 2;
+        else
+            fl_speed = fl_initial_speed;
+
+
 
 
     }
