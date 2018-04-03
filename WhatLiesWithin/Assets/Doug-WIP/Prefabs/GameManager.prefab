@@ -146,4 +146,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ca_invUI: {fileID: 0}
   ri_Key: {fileID: 0}
+  ri_Document: {fileID: 0}
   key_inventoryButton: 105

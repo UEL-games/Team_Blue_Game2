@@ -8,6 +8,8 @@ public class DJ_GameManager : MonoBehaviour {
     public static bool bl_HasPhone;
     public static bool bl_HasOfficeKey;
     public static bool bl_HasLetter;
+    public static bool bl_HasSandwich;
+    public static bool bl_DroppedSandwich;
 
     public static bool paused = false;
     
@@ -22,7 +24,6 @@ public class DJ_GameManager : MonoBehaviour {
    
 	void FixedUpdate () {
 
-        
 
         #region Pause
         //Pauses Game
@@ -65,6 +66,11 @@ public class DJ_GameManager : MonoBehaviour {
         {
             bl_HasLetter = true;
             Debug.Log("Has Letter " + bl_HasLetter);
+        }
+        if (Input.GetKeyDown(KeyCode.F9))
+        {
+            bl_HasSandwich = true;
+            Debug.Log("Has Sandwich " + bl_HasSandwich);
         }
         #endregion
 
